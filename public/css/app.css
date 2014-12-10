@@ -1,0 +1,72 @@
+html, body { 
+  height:100%; 
+  margin: 0 auto;
+  padding: 0;
+  
+}
+@font-face {
+    font-family: 'sf_wonder_comicbold';
+    src: url('SF_Wonder_Comic_Bold-webfont.eot');
+    src: url('SF_Wonder_Comic_Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('SF_Wonder_Comic_Bold-webfont.woff') format('woff'),
+         url('SF_Wonder_Comic_Bold-webfont.ttf') format('truetype'),
+         url('SF_Wonder_Comic_Bold-webfont.svg#sf_wonder_comicbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body {
+	font-family: 'Lato', Arial, sans-serif;
+	font-weight: 400;
+	text-align: left;
+  font-size: 1.5em;
+}
+
+
+#indexbuttons {
+	margin-top: -1em;
+	padding-top: 0;
+}
+	
+#who ul li a {
+	font-family: 'sf_wonder_comicbold', Arial, sans-serif;
+	font-size: 2em;
+	color: #f04124;
+	text-decoration: none;
+}
+
+/*#container {
+background-color: #ffffff;
+ height: 100%;
+ margin: 0 auto;
+} */
+h1 {
+	font-family: 'sf_wonder_comicbold', Arial, sans-serif;
+	font-size: 2.5em;
+	color: #323232 !important;
+	text-align: center;
+	margin-top: .5em;
+}
+/* Default header styles */
+h2, h3, h4, h5, h6 {
+  font-family: 'sf_wonder_comicbold', Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #222222;
+  text-rendering: optimizeLegibility;
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4; }
+  h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+    font-size: 60%;
+    color: #6f6f6f;
+    line-height: 0; }
+table th {
+	font-family: 'sf_wonder_comicbold', Arial, sans-serif;
+  font-size: 1.5em;
+}
+table td {
+	font-family: 'Lato', Arial, sans-serif;
+	font-weight: 400;
+	font-size: 1em;
+}
