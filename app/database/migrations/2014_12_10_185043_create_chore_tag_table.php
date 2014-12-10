@@ -10,21 +10,21 @@ class CreateChoreTagTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up() 
+	public function up()
 	{
 		Schema::create('chore_tag', function($table) {
 
-			# AI, PK
+			#AI, PK
 			# none needed
 
-			# General data...
+			# general data...
 			$table->integer('chore_id')->unsigned();
 			$table->integer('tag_id')->unsigned();
-			
-			# Define foreign keys...
+
+			# define foreign keys...
 			$table->foreign('chore_id')->references('id')->on('chores');
 			$table->foreign('tag_id')->references('id')->on('tags');
-			
+
 		});
 	}
 

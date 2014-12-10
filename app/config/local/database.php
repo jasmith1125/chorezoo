@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'sandbox',
+			'database'  => 'chorezoo',
 			'username'  => 'root',
 			'password'  => 'root',
 			'charset'   => 'utf8',

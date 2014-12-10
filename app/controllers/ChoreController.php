@@ -20,10 +20,12 @@ class ChoreController extends BaseController {
     public function handleCreate()
     {
         // Handle create form submission.
-        $chore = new Chore;
+        $id = Auth::user()->id;
+        $chore = new Chore();
         $chore->description = Input::get('description');
+        $chore->user_id = Auth::user()->getId();
         $chore->completed = Input::has('completed');
-        $chore->save();
+        $chore->save(); 
 
         return Redirect::action('ChoreController@getChart');
     }

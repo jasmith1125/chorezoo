@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'sandbox',
+			'host'      => 'chorezoo',
 			'database'  => 'root',
 			'username'  => 'root',
 			'password'  => '',
