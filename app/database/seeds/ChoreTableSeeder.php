@@ -12,8 +12,11 @@ class ChoreTableSeeder extends Seeder {
 		DB::statement('TRUNCATE chore_tag');
 		DB::statement('TRUNCATE users');
 
-
-
+		# Users
+		$user = new User;
+		$user->username    = 'Quinn';
+		$user->password = Hash::make('quinn123');
+		$user->save();
 
 		# Tags (Created using the Model Create shortcut method)
 		# Note: Tags model must have `protected $fillable = array('name');` in order for this to work
@@ -30,6 +33,7 @@ class ChoreTableSeeder extends Seeder {
 		$chore1 = new Chore;
 		$chore1->description = 'Complete homework assignments';
 		$chore1->completed = '';
+		$chore1->user_id = 1;
 
 		# Associate has to be called *before* the book is created (save())
 		//$chore1->user()->associate($user_id); # Equivalent of $chore1->user_id = $user->id
@@ -44,6 +48,7 @@ class ChoreTableSeeder extends Seeder {
 		$chore2 = new Chore;
 		$chore2->description = 'Feed and water pets';
 		$chore2->completed = '';
+		$chore2->user_id = 1;
 
 		# Associate has to be called *before* the book is created (save())
 		//$chore2->user()->associate($user_id); # Equivalent of $chore1->user_id = $user->id
@@ -59,6 +64,7 @@ class ChoreTableSeeder extends Seeder {
 		$chore3 = new Chore;
 		$chore3->description = 'Walk the dog';
 		$chore3->completed = '';
+		$chore3->user_id = 1;
 
 		# Associate has to be called *before* the book is created (save())
 		//$chore3->user()->associate($user_id); # Equivalent of $chore1->user_id = $user->id
@@ -74,6 +80,7 @@ class ChoreTableSeeder extends Seeder {
 		$chore4 = new Chore;
 		$chore4->description = 'Make my bed';
 		$chore4->completed = '';
+		$chore4->user_id = 1;
 
 		# Associate has to be called *before* the book is created (save())
 		//$chore4->user()->associate($user_id); # Equivalent of $chore1->user_id = $user->id
@@ -86,6 +93,7 @@ class ChoreTableSeeder extends Seeder {
 		$chore5 = new Chore;
 		$chore5->description = 'Put away all toys and books';
 		$chore5->completed = '';
+		$chore5->user_id = 1;
 
 		# Associate has to be called *before* the book is created (save())
 		//$chore5->user()->associate($user_id); # Equivalent of $chore1->user_id = $user->id
