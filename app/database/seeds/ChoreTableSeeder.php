@@ -103,12 +103,6 @@ class ChoreTableSeeder extends Seeder {
 		# since resulting `book_id` is needed in the book_tag pivot table
 		$chore5->tags()->attach($housework);
 
-		
-		# Users
-		$user = new User;
-		$user->username    = 'Quinn';
-		$user->password = Hash::make('quinn123');
-		$user->save();
 
 		
 		}
