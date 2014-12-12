@@ -31,12 +31,12 @@
         <div class='flash-message'>{{ Session::get('flash_message') }}</div>
     @endif
 
-<ul>
+<ul class="nav">
         @if(Auth::check())
             <li><a href='/logout'>Log out {{ Auth::user()->username; }}</a></li>
             <li><a href='/chart'>Your Chore Chart</a></li>
-            <li><a href='/tags'>All Tags</a></li>
             <li><a href='/create'>Create a New Chore</a></li>
+            <li><a href='/tags'>Tag a Chore</a></li> 
         @else
               <li><a href='/signup'>Sign up</a> or <a href='/login'>Log in</a></li>
         @endif
