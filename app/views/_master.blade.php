@@ -25,22 +25,28 @@
   <img src="../img/giraffe_banner3.png" alt="zoo animals" >
 
 <div class="row">
-<div id="container" class="large-10 large-centered columns">
+<div id="container" class="large-8 large-centered columns">
 
    @if(Session::get('flash_message'))
         <div class='flash-message'>{{ Session::get('flash_message') }}</div>
     @endif
 
-<ul class="nav">
+<ul class="inline-list">
         @if(Auth::check())
             <li><a href='/logout'>Log out {{ Auth::user()->username; }}</a></li>
             <li><a href='/chart'>Your Chore Chart</a></li>
             <li><a href='/create'>Create a New Chore</a></li>
-            <li><a href='/tags'>Tag a Chore</a></li> 
+            </ul>
         @else
-              <li><a href='/signup'>Sign up</a> or <a href='/login'>Log in</a></li>
+         
+           <ul class="button-group radius">
+            <li><a href='/signup' class="medium button alert">Sign Up</a></li>
+          <li><a href='/login' class="medium button alert">Log In</a></li>
+          </ul>
         @endif
-        </ul>
+   
+
+
     </div>
    </div>
 

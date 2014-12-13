@@ -22,4 +22,21 @@ class Tag extends Eloquent {
         });	
 	} 
 
+    /**
+    *
+    * @return Array
+    */
+    public static function getIdNamePair() {
+
+        $tags = Array();
+
+        $collection = Tag::all();
+
+        foreach($collection as $tag) {
+            $tags[$tag->id] = $tag->name;
+        }
+
+        return $tags;
+    }
+
 }

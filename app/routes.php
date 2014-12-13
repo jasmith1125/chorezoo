@@ -29,13 +29,21 @@ Route::get('/logout', ['before' => 'auth', 'uses' => 'UserController@getLogout']
 // Bind route parameters.
 Route::model('chore', 'Chore');
 
-// Show pages.
-Route::get('/chart', 'ChoreController@getChart');
-Route::get('/create', 'ChoreController@getCreate');
-Route::get('/edit/{chore}', 'ChoreController@edit');
-Route::get('/delete/{chore}', 'ChoreController@delete');
 
-// Handle form submissions.
+Route::get('/chart', 'ChoreController@getChart');
+
+Route::get('/create', 'ChoreController@getCreate');
 Route::post('/create', 'ChoreController@handleCreate');
+
+Route::get('/edit/{chore}', 'ChoreController@edit');
 Route::post('/edit', 'ChoreController@handleEdit');
+
+Route::get('/delete/{chore}', 'ChoreController@delete');
 Route::post('/delete', 'ChoreController@handleDelete');
+
+/**
+* Tag
+* (Implicit RESTful Routing)
+*/
+Route::resource('tag', 'TagController');
+
