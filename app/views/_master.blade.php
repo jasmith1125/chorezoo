@@ -36,6 +36,7 @@
             <li><a href='/logout'>Log out {{ Auth::user()->username; }}</a></li>
             <li><a href='/chart'>Your Chore Chart</a></li>
             <li><a href='/create'>Create a New Chore</a></li>
+            <li><a href='/search'>Search Chores by Tag</a></li>
             </ul>
         @else
          

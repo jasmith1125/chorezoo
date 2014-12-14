@@ -39,4 +39,6 @@ class Tag extends Eloquent {
         return $tags;
     }
 
+
+
 }

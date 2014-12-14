@@ -23,9 +23,9 @@ class ChoreTableSeeder extends Seeder {
 		$homework         = Tag::create(array('name' => 'homework'));
 		$housework       = Tag::create(array('name' => 'housework'));
 		$event    = Tag::create(array('name' => 'event'));
-		$top_priority       = Tag::create(array('name' => 'top_priority'));
-		$community_service        = Tag::create(array('name' => 'community_service'));
-		$fun_stuff         = Tag::create(array('name' => 'fun_stuff'));
+		$top_priority       = Tag::create(array('name' => 'top priority'));
+		$community_service        = Tag::create(array('name' => 'community service'));
+		$fun_stuff         = Tag::create(array('name' => 'fun stuff'));
 		
 
 

@@ -21,9 +21,10 @@ class CreateChoreTagTable extends Migration {
 			$table->integer('chore_id')->unsigned();
 			$table->integer('tag_id')->unsigned();
 
+
 			# define foreign keys...
-			$table->foreign('chore_id')->references('id')->on('chores');
-			$table->foreign('tag_id')->references('id')->on('tags');
+			$table->foreign('chore_id')->references('id')->on('chores')->onDelete('cascade');
+			$table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
 
 		});
 	}

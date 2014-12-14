@@ -44,7 +44,7 @@ class Chore extends Eloquent {
             }
         }
     }
-
+   
     /**
     * Search among chores, users and tags
     * @return Collection

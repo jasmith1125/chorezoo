@@ -1,9 +1,4 @@
-html, body { 
-  height:100%; 
-  margin: 0 auto;
-  padding: 0;
-  
-}
+
 @font-face {
     font-family: 'sf_wonder_comicbold';
     src: url('SF_Wonder_Comic_Bold-webfont.eot');
@@ -15,25 +10,14 @@ html, body {
     font-style: normal;
 
 }
-body {
-	font-family: 'Lato', Arial, sans-serif;
-	font-weight: 400;
-	text-align: left;
-  font-size: 1.5em;
-}
-
 
 #indexbuttons {
 	margin-top: -1em;
 	padding-top: 0;
 }
-	
-#who ul li a {
-	font-family: 'sf_wonder_comicbold', Arial, sans-serif;
-	font-size: 2em;
-	color: #f04124;
-	text-decoration: none;
-}
+a:link {
+  text-decoration: underline;
+}	
 
 
 h1 {
@@ -70,4 +54,7 @@ table td {
 
 .inline-list {
   text-decoration: underline//;
+}
+h5 {
+  margin-top: 2em;
 }

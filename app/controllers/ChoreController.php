@@ -2,13 +2,29 @@
 
 class ChoreController extends BaseController {
 
-	public function getChart()
+    public function getChart()
     {
         // Show a listing of chores.
         $chores = Chore::where('user_id','=', Auth::user()->id)->get();
         return View::make('chart', compact('chores'));
     }
+    public function getSearch()
+    {
+        return View::make('search');
+    }
 
+    public function search_results()
+    {
+        $tags = Tag::getIdNamePair();
+        $chores = Chore::with('tags', 'user');
+        $chores = Chore::whereHas('tags', function($q) {
+
+            $q->where('name', 'LIKE', "%$query%");
+        })
+            ->get();
+        return View::make('search_results', compact('chores', 'tags'));
+        //return Redirect::action('ChoreController@getChart');
+    }
 
     // Show the create chore form.
     public function getCreate()
@@ -46,19 +62,22 @@ class ChoreController extends BaseController {
 
     public function edit(Chore $chore)
     {
+            $tags = Tag::getIdNamePair();
         // Show the edit chore form.
-        return View::make('edit', compact('chore'));
+        return View::make('edit', compact('chore'))->with('tags');
     }
 
-    public function handleEdit()
+    public function handleEdit(Tag $tag)
     {
         // Handle edit form submission.
+        $tags = Tag::getIdNamePair();
         $chore = Chore::findOrFail(Input::get('id'));
         $chore->description = Input::get('description');
         $chore->completed     = Input::has('completed');
+        $tags->name           = Input::get('name');
         $chore->save();
 
-        return Redirect::action('ChoreController@getChart');
+        return Redirect::action('ChoreController@getChart')->with('tags');
     }
 
     public function tag(Chore $chore)

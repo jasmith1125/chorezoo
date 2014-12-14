@@ -1,7 +1,7 @@
 @extends('_master')
 
 @section('title')
-   Here Is Your Chore Chart!
+   Search Results
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
 
 <div class="row">
 <div class="large-10 columns">
-<h2>Here Is Your Chore Chart!</h2>
+<h2>Here Are Your Search Results!</h2>
 
 </div>
 </div>
@@ -32,9 +32,9 @@
 </tr>
 </thead>
 <tbody>
-@foreach($chores as $chore)
 <tr>
-<td>{{ $chore->description }}</td>
+<td>@foreach($tag->chores as $chore)
+	{{ $chore->description }}</td>
 <td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
 <td>
 <a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Edit</a>
