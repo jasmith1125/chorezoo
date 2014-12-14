@@ -62,19 +62,17 @@ class ChoreController extends BaseController {
 
     public function edit(Chore $chore)
     {
-            $tags = Tag::getIdNamePair();
+            
         // Show the edit chore form.
-        return View::make('edit', compact('chore'))->with('tags');
+        return View::make('edit', compact('chore'));
     }
 
-    public function handleEdit(Tag $tag)
+    public function handleEdit()
     {
         // Handle edit form submission.
-        $tags = Tag::getIdNamePair();
         $chore = Chore::findOrFail(Input::get('id'));
         $chore->description = Input::get('description');
         $chore->completed     = Input::has('completed');
-        $tags->name           = Input::get('name');
         $chore->save();
 
         return Redirect::action('ChoreController@getChart')->with('tags');
