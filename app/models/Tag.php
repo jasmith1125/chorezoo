@@ -10,7 +10,6 @@ class Tag extends Eloquent {
         return $this->belongsToMany('Chore');
     }
 
-
 	# Model events...
 	# http://laravel.com/docs/eloquent#model-events
 	public static function boot() {
@@ -38,7 +37,4 @@ class Tag extends Eloquent {
 
         return $tags;
     }
-
-
-
 }

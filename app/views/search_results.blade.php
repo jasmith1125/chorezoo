@@ -6,45 +6,43 @@
 
 @section('content')
  
- 
-<div id="longer_page" class="row">
-<div class="large-10 large-centered columns">
-<h2>Here Are Your Search Results!</h2>
+	<div id="longer_page" class="row">
+	<div class="large-10 large-centered columns">
+	<h2>Here Are Your Search Results!</h2>
 
-</div>
-</div>
-<div class="row">
-<div class="large-12 large-centered columns">
-@if ($chores->isEmpty())
-<p>There are no chores with this tag</p>
-@else
-    
-<table>
-<thead class="choreheader">
-<tr>
-<th width="500">Chore Description</th>
-<th width="250">Completed?</th>
-<th width="400">Actions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@foreach($tag->chores as $chore)
-	{{ $chore->description }}</td>
-<td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
-<td>
-<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Edit</a>
-<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Add Tag</a>
-<a href="{{ action('ChoreController@delete', $chore->id) }}" class="button tiny alert">Delete</a>
-</td>
-</tr>
-@endforeach
-</tbody>
-</table>
-</div>
-</div>
-
-@endif
+	</div>
+	</div>
+	<div class="row">
+	<div class="large-12 large-centered columns">
+		@if ($chores->isEmpty())
+		<p>There are no chores with this tag</p>
+		@else
+		    
+		<table>
+		<thead class="choreheader">
+		<tr>
+		<th width="500">Chore Description</th>
+		<th width="250">Completed?</th>
+		<th width="400">Actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		<td>@foreach($tag->chores as $chore)
+			{{ $chore->description }}</td>
+		<td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
+		<td>
+		<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Edit</a>
+		<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Add Tag</a>
+		<a href="{{ action('ChoreController@delete', $chore->id) }}" class="button tiny alert">Delete</a>
+		</td>
+		</tr>
+		@endforeach
+		</tbody>
+		</table>
+	</div>
+	</div>
+		@endif
     
 <script src="{{ URL::asset('js/vendor/jquery.js') }}"></script>
   <script src="{{ URL::asset('js/foundation.min.js') }}"></script>
