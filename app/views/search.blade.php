@@ -5,22 +5,25 @@
 @stop
 
 @section('content')
-<div class="row">
-   <div class="large-12 columns">
-	<h1>Search by Tag</h1>
+<div id="longer_page" class="row">
+   <div class="large-8 large-centered columns">
+	<h2>Search Chores by Tag</h2>
 
-<div class="row">
 <!-- show all the tag options -->
+
+
 {{ Form::open(array('url' => '/search')) }}
 
         @foreach($tags as $id => $tag)
-            {{ Form::checkbox('tags[]', $id); }} {{ $tag }}
+            {{ Form::radio('tags[]', $id); }} {{ $tag }}
         @endforeach
 
         {{ Form::submit('Search'); }}
 
     {{ Form::close() }}
-    </div></div>
+    </div>
+    </div>
+
 @stop
 
  @secion('/body')

@@ -42,7 +42,7 @@ Route::get('/delete/{chore}', 'ChoreController@delete');
 Route::post('/delete', 'ChoreController@handleDelete');
 
 Route::get('/search', 'ChoreController@getSearch');
-Route::get('/search_results', 'ChoreController@search_results');
+Route::post('/search', 'ChoreController@postSearch');
 
 /**
 * Tag

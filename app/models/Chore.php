@@ -58,7 +58,7 @@ class Chore extends Eloquent {
             # Eager load tags and author
             $chores = Chore::with('tags', 'user')
             ->whereHas('user', function($q) use($query) {
-                $q->where('name', 'LIKE', "%$query%");
+                $q->where('username', 'LIKE', "%$query%");
             })
             ->orWhereHas('tags', function($q) use($query) {
                 $q->where('name', 'LIKE', "%$query%");

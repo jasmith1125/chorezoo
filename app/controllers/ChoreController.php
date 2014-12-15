@@ -8,23 +8,7 @@ class ChoreController extends BaseController {
         $chores = Chore::where('user_id','=', Auth::user()->id)->get();
         return View::make('chart', compact('chores'));
     }
-    public function getSearch()
-    {
-        return View::make('search');
-    }
-
-    public function search_results()
-    {
-        $tags = Tag::getIdNamePair();
-        $chores = Chore::with('tags', 'user');
-        $chores = Chore::whereHas('tags', function($q) {
-
-            $q->where('name', 'LIKE', "%$query%");
-        })
-            ->get();
-        return View::make('search_results', compact('chores', 'tags'));
-        //return Redirect::action('ChoreController@getChart');
-    }
+   
 
     // Show the create chore form.
     public function getCreate()
@@ -62,9 +46,9 @@ class ChoreController extends BaseController {
 
     public function edit(Chore $chore)
     {
-            
         // Show the edit chore form.
-        return View::make('edit', compact('chore'));
+        $tags = Tag::getIdNamePair();
+        return View::make('edit', compact('chore'))->with('tags',$tags);
     }
 
     public function handleEdit()
@@ -75,7 +59,38 @@ class ChoreController extends BaseController {
         $chore->completed     = Input::has('completed');
         $chore->save();
 
-        return Redirect::action('ChoreController@getChart')->with('tags');
+        # Note this save happens before we enter any tags (next step)
+        $chore->save();
+
+        foreach(Input::get('tags') as $tag) {
+
+         # This enters a new row in the chore_tag table
+         $chore->tags()->save(Tag::find($tag));
+
+     }    
+        return Redirect::action('ChoreController@getChart');
+    }
+
+
+     public function getSearch()
+    {
+        $tags = Tag::getIdNamePair();
+        
+        return View::make('search')
+        ->with('tags',$tags);
+        
+    }
+
+    public function postSearch()
+    {   
+        $tags = Tag::getIdNamePair();
+        $chore = Chore::findOrFail(Input::get('id'))->with('tags');
+        $tags = $chore->tags()->lists('id');
+        $chores = Chore::whereHas('tags', function($q) use ($tags) {
+            $q->whereIn('id', $tags);
+        })
+            ->get();
+        return View::make('search_results', compact('chores'));
     }
 
     public function tag(Chore $chore)

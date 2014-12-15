@@ -1,23 +1,24 @@
 @extends('_master')
 
 @section('title')
-	Log in
+	Log In
 @stop
 
 @section('content')
-
-<h1>Log in</h1>
+<div id="longer_page" class="row">
+<div class ="large-5 large-centered columns">
+<h2>Log in</h2>
 
 {{ Form::open(array('url' => '/login')) }}
 
     {{ Form::label('username') }}
-    {{ Form::text('username') }}
+    {{ Form::text('username','Quinn') }}
 
-    {{ Form::label('password') }}
-    {{ Form::password('password') }}
+    {{ Form::label('password') }} (quinn123)
+    {{ Form::password('password') }} 
 
     {{ Form::submit('Submit') }}
 
 {{ Form::close() }}
-
+</div></div>
 @stop

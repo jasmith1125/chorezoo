@@ -10,7 +10,21 @@
     font-style: normal;
 
 }
+/* Background pattern from subtlepatterns.com */
+#outer_limits {
+  background: url('../img/subtle_zebra_3d_@2X.png')repeat;
+  height: auto;
+}
 
+#container {
+background-color: #ffffff;
+margin: 0 auto;
+padding: 0;
+ height: auto%;
+ -webkit-box-shadow: 8px 0px 10px -5px rgba(153, 153, 153, 1), -8px 0px 10px -5px rgba(153, 153, 153, 1);
+   -moz-box-shadow: 8px 0px 10px -5px rgba(153, 153, 153, 1), -8px 0px 10px -5px rgba(153, 153, 153, 1);
+        box-shadow: 8px 0px 10px -5px rgba(153, 153, 153, 1), -8px 0px 10px -5px rgba(153, 153, 153, 1);
+}
 #indexbuttons {
 	margin-top: -1em;
 	padding-top: 0;
@@ -58,3 +72,16 @@ table td {
 h5 {
   margin-top: 2em;
 }
+.alert-box {
+  padding-top: .5em;
+}
+h2 small {
+  font-size: 40%;
+}
+img {
+  padding-bottom: 1em;
+}
+#longer_page {
+  padding-bottom: 20em;
+}
+

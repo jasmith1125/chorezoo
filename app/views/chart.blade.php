@@ -7,20 +7,15 @@
 @section('content')
  
  
-<div class="row">
-<div id="container" class="large-10 large-centered columns">
+<div id="longer_page" class="row">
+<div class="large-10 large-centered columns">
 
-
-<div class="row">
-<div class="large-10 columns">
 <h2>Here Is Your Chore Chart!</h2>
 
-</div>
-</div>
 <div class="row">
 <div class="large-12 large-centered columns">
 @if ($chores->isEmpty())
-<p>There are no chores! :(</p>
+<p>There are no chores!</p>
 @else
     
 <table>
@@ -37,8 +32,7 @@
 <td>{{ $chore->description }}</td>
 <td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
 <td>
-<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Edit</a>
-<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Add Tag</a>
+<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Edit Chore/Add Tag</a>
 <a href="{{ action('ChoreController@delete', $chore->id) }}" class="button tiny alert">Delete</a>
 </td>
 </tr>

@@ -1,11 +1,13 @@
 @extends('_master')
 
 @section('title')
-	Log in
+	Sign Up
 @stop
 
 @section('content')
-<h1>Sign up</h1>
+<div id="longer_page" class="row">
+<div class ="large-5 large-centered columns">
+<h2>Sign up</h2>
 
 @foreach($errors->all() as $message)
 	<div class='error'>{{ $message }}</div>
@@ -23,4 +25,5 @@
     {{ Form::submit('Submit') }}
 
 {{ Form::close() }}
+</div></div>
 @stop

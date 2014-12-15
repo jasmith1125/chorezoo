@@ -1,9 +1,13 @@
 @extends('_master')
 
+@section('title')
+   Create a New Chore
+@stop
+
 @section('content')
 
-<div class="row">
-    <div class="large-12 columns">
+<div id="longer_page" class="row">
+    <div class="large-8 large-centered columns">
         <h2>Create Chore</h2>
 
         

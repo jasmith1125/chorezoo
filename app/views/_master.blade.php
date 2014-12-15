@@ -21,17 +21,25 @@
 
 </head>
 <body>
+ <div id="outer_limits">
+<div id="container" class="row">
  
-  <img src="../img/giraffe_banner3.png" alt="zoo animals" >
+ <div class="row">
+    <div class = "large-12 columns">
+  <img src="../img/giraffe_banner3.png" alt="giraffe with Chore Zoo title">
+</div>
+</div>
+    
+<div class="row">
+<div class="large-4 large-offset-7 columns">
+   @if(Session::get('flash_message'))
+        <div data-alert class="alert-box alert round">{{ Session::get('flash_message') }}</div>
+    @endif
+    </div></div>
 
 <div class="row">
-<div id="container" class="large-8 large-centered columns">
-
-   @if(Session::get('flash_message'))
-        <div class='flash-message'>{{ Session::get('flash_message') }}</div>
-    @endif
-
-<ul class="inline-list">
+<div class="large-8 large-offset-2 columns">
+    <ul class="inline-list">
         @if(Auth::check())
             <li><a href='/logout'>Log out {{ Auth::user()->username; }}</a></li>
             <li><a href='/chart'>Your Chore Chart</a></li>
@@ -39,21 +47,23 @@
             <li><a href='/search'>Search Chores by Tag</a></li>
             </ul>
         @else
-         
+         <div class="row">
+         <div class="large-6 large-centered columns">
            <ul class="button-group radius">
-            <li><a href='/signup' class="medium button alert">Sign Up</a></li>
-          <li><a href='/login' class="medium button alert">Log In</a></li>
+            <li><a href='/signup' class="medium button alert radius">Sign Up</a></li>
+          <li><a href='/login' class="medium button alert radius">Log In</a></li>
           </ul>
+          </div>
+          </div>
         @endif
-   
 
-
-    </div>
    </div>
+   </div>
+  
+  @yield('content')
 
-    
-
-    @yield('content')
+</div><!-- end container -->
+</div><!-- end outer_limits -->
 
     @yield('/body')
 <script src="{{ URL::asset('js/vendor/jquery.js') }}"></script>

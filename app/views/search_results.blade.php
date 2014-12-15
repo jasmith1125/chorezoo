@@ -7,12 +7,8 @@
 @section('content')
  
  
-<div class="row">
-<div id="container" class="large-10 large-centered columns">
-
-
-<div class="row">
-<div class="large-10 columns">
+<div id="longer_page" class="row">
+<div class="large-10 large-centered columns">
 <h2>Here Are Your Search Results!</h2>
 
 </div>
@@ -20,7 +16,7 @@
 <div class="row">
 <div class="large-12 large-centered columns">
 @if ($chores->isEmpty())
-<p>There are no chores! :(</p>
+<p>There are no chores with this tag</p>
 @else
     
 <table>

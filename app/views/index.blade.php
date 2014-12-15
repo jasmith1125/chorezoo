@@ -7,8 +7,8 @@
 @section('content')
  
  
-<div class="row">
-<div id="container" class="large-10 large-centered columns">
+<div id= "longer_page" class="row">
+<div class="large-10 large-centered columns">
 
    @if(Session::get('flash_message'))
         <div class='flash-message'>{{ Session::get('flash_message') }}</div>
