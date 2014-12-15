@@ -82,6 +82,14 @@ img {
   padding-bottom: 1em;
 }
 #longer_page {
-  padding-bottom: 20em;
+  padding-bottom: 30em;
 }
 
+button.alert, .button.alert {
+    background-color: #fd6103;
+    border-color: #e36113;
+    color: white; }
+    button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
+      background-color: #e36113; }
+    button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
+      color: white; }
