@@ -7,7 +7,7 @@
 @section('content')
 <div id="longer_page" class="row">
     <div class="large-8 large-centered columns">
-        <h2>Tag Chore <small>Then you will be able to search chores by category!</small></h2>
+        <h3>Tag Chore <small>Then you will be able to search chores by category!</small></h3>
      
 
     <form action="{{ action('ChoreController@postTag') }}" method="post" role="form">

@@ -1,16 +1,15 @@
 @extends('_master')
 
 @section('title')
-	Search (Ajax)
+	Search Chores by Tag
 @stop
 
 @section('content')
 <div id="longer_page" class="row">
    <div class="large-8 large-centered columns">
-	<h2>Search Chores by Tag</h2>
+	<h3>Search Chores by Tag</h3>
 
 <!-- show all the tag options -->
-
 
 {{ Form::open(array('url' => '/search')) }}
 

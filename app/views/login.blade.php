@@ -7,7 +7,7 @@
 @section('content')
 <div id="longer_page" class="row">
 <div class ="large-5 large-centered columns">
-<h2>Log in</h2>
+<h3>Log in</h3>
 
 {{ Form::open(array('url' => '/login')) }}
 

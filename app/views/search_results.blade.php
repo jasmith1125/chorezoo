@@ -8,7 +8,7 @@
  
 	<div id="longer_page" class="row">
 	<div class="large-10 large-centered columns">
-	<h2>Here Are Your Search Results!</h2>
+	<h3>Here Are Your Search Results!</h3>
 
 	</div>
 	</div>
@@ -27,16 +27,17 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr>
-		<td>@foreach($chore->tags as $tag)
-			{{ $chore->description }}</td>
-		<td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
-		<td>
-		<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Edit</a>
-		<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Add Tag</a>
-		<a href="{{ action('ChoreController@delete', $chore->id) }}" class="button tiny alert">Delete</a>
-		</td>
-		</tr>
+
+		@foreach($chores as $chore)
+			<tr>
+				<td>{{ $chore->description }}</td>
+				<td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
+				<td>
+				<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Edit</a>
+				<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Add Tag</a>
+				<a href="{{ action('ChoreController@delete', $chore->id) }}" class="button tiny alert">Delete</a>
+				</td>
+			</tr>
 		@endforeach
 		</tbody>
 		</table>

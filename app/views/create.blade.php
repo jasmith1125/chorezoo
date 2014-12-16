@@ -8,7 +8,7 @@
 
 <div id="longer_page" class="row">
     <div class="large-8 large-centered columns">
-        <h2>Create Chore</h2>
+        <h3>Create Chore</h3>
 
         
 
@@ -16,8 +16,9 @@
 
         {{ Form::label('title','Description') }}
         {{ Form::text('description'); }}
+        
   <div id="space_above">      
-<h5 small>Add tags to your chore so you can search chores by category</h5 small>
+    <h5 small>Add tags to your chore so you can search chores by category</h5 small>
         @foreach($tags as $id => $tag)
             {{ Form::checkbox('tags[]', $id); }} {{ $tag }} 
         @endforeach

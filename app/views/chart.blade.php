@@ -10,7 +10,7 @@
 <div id="longer_page" class="row">
 <div class="large-10 large-centered columns">
 
-<h2>Here Is Your Chore Chart!</h2>
+<h3>Here Is Your Chore Chart!</h3>
 
 <div class="row">
 <div class="large-12 large-centered columns">

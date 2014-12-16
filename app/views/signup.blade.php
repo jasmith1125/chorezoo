@@ -7,7 +7,7 @@
 @section('content')
 <div id="longer_page" class="row">
 <div class ="large-5 large-centered columns">
-<h2>Sign up</h2>
+<h3>Sign up</h3>
 
 @foreach($errors->all() as $message)
 	<div class='error'>{{ $message }}</div>

@@ -10,7 +10,7 @@ class Chore extends Eloquent {
     */
     public function tags() {
 
-        return $this->belongsToMany('Tag', 'chore_tag');
+        return $this->belongsToMany('Tag');
     }
 
     /**
@@ -47,12 +47,12 @@ class Chore extends Eloquent {
     * @return Collection
     */
     
-    public static function search($query) {
+  public static function search($query) {
 
         # If there is a query, search the table with that query
         if($query) {
 
-            # Eager load tags and author
+            # Eager load tags and user
             $chores = Chore::with('tags', 'user')
             ->whereHas('user', function($q) use($query) {
                 $q->where('username', 'LIKE', "%$query%");
@@ -75,4 +75,4 @@ class Chore extends Eloquent {
 
         return $chores;
     }
-}
+} 

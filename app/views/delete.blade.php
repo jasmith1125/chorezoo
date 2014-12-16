@@ -7,7 +7,7 @@
 @section('content')
 	<div id="longer_page" class="row">
     <div class="large-10 large-centered columns">
-        <h2>Delete {{ $chore->description }} <small>Are you sure?</small></h2>
+        <h3>Delete {{ $chore->description }} <small>Are you sure?</small></h3>
     
     <form action="{{ action('ChoreController@handleDelete') }}" method="post" role="form">
         <input type="hidden" name="chore" value="{{ $chore->id }}" />

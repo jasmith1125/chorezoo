@@ -38,8 +38,7 @@ class ChoreController extends BaseController {
          $chore->tags()->save(Tag::find($tag));
 
         }
-        $chore->completed = Input::has('completed');
-
+        
         return Redirect::action('ChoreController@getChart');
 
     }
@@ -62,30 +61,18 @@ class ChoreController extends BaseController {
         # Note this save happens before we enter any tags (next step)
         $chore->save();
 
-       // foreach(Input::get('tags') as $tag) {
+        $tags = Tag::getIdNamePair();
+       
+       foreach(Input::get('tags') as $tag) {
 
          # This enters a new row in the chore_tag table
-         //$chore->tags()->save(Tag::find($tag));
+        $chore->tags()->save(Tag::find($tag));
 
-     //}    
+         
         return Redirect::action('ChoreController@getChart');
     }
+}
 
-    /*public function getTag(Chore $chore)
-    {
-        $tags = Tag::getIdNamePair();
-        return View::make('tag', compact('chore'))->with('tags',$tags);
-    }
-
-    public function postTag() 
-    {
-        foreach(Input::get('tags') as $tag) {
-
-         # This enters a new row in the chore_tag table
-         $chore->tags()->save(Tag::find($tag));
-          return Redirect::action('ChoreController@getChart');
-    }
-} */
 
      public function getSearch()
     {
@@ -96,18 +83,20 @@ class ChoreController extends BaseController {
         
     }
 
-    public function postSearch()
-    {   
-        $tags = Tag::getIdNamePair();
-        $chore = Chore::findOrFail(Input::get('id'))->with('tags');
-        $tags = $chore->tags()->lists('id');
+        public function postSearch()
+    {
+
+        // Get array of tag ids that were checked
+        $tags = Input::get('tags');
+
+        // Query for chores that have this tag(s)
         $chores = Chore::whereHas('tags', function($q) use ($tags) {
             $q->whereIn('id', $tags);
-        })
-            ->get();
-        return View::make('search_results', compact('chores'));
-    }
+        })->get();
 
+        return View::make('search_results', compact('chores'));
+
+    }
 
     public function delete(Chore $chore)
     {
@@ -125,7 +114,5 @@ class ChoreController extends BaseController {
 
         return Redirect::action('ChoreController@getChart');
     }
-
-
 
 }

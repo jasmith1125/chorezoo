@@ -7,7 +7,7 @@
 @section('content')
 <div id="longer_page" class="row">
     <div class="large-8 large-centered columns">
-        <h2>Edit Chore Description<small>Don't forget to check &ldquo;completed&rdquo; when your chore is done!</small></h2>
+        <h3>Edit Chore Description <small>Be sure to check &ldquo;completed&rdquo; when your chore is done!</small></h3>
      
 
     <form action="{{ action('ChoreController@handleEdit') }}" method="post" role="form">

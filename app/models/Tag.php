@@ -7,7 +7,7 @@ class Tag extends Eloquent {
 
     public function chores() {
         # Tags belong to many Chores
-        return $this->belongsToMany('Chore', 'chore_tag');
+        return $this->belongsToMany('Chore');
     }
 
 	# Model events...
