@@ -38,7 +38,7 @@ class ChoreController extends BaseController {
          $chore->tags()->save(Tag::find($tag));
 
         }
-        
+
         return Redirect::action('ChoreController@getChart');
 
     }
@@ -61,8 +61,6 @@ class ChoreController extends BaseController {
         # Note this save happens before we enter any tags (next step)
         $chore->save();
 
-        $tags = Tag::getIdNamePair();
-       
        foreach(Input::get('tags') as $tag) {
 
          # This enters a new row in the chore_tag table
