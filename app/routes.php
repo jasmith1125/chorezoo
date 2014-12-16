@@ -11,7 +11,20 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the Closure to execute when that URI is requested.
 |
-*/
+
+/* retrieving data from pivot table test */
+
+Route::get('/test', function() {
+
+	//echo Paste\Pre::render(Chore::find(1)->tags->toArray());
+
+	foreach(Chore::find(1)->tags as $tag) {
+		echo Paste\Pre::render($tag->pivot->toArray());
+
+	}
+
+});
+
 //show the home page
 Route::get('/', 'IndexController@getIndex');
 /**
@@ -38,15 +51,13 @@ Route::post('/create', 'ChoreController@handleCreate');
 Route::get('/edit/{chore}', 'ChoreController@edit');
 Route::post('/edit', 'ChoreController@handleEdit');
 
+/* Route::get('/getTag{chore}', 'ChoreController@getTag');
+Route::post('/postTag', 'ChoreController@postTag'); */
+
 Route::get('/delete/{chore}', 'ChoreController@delete');
 Route::post('/delete', 'ChoreController@handleDelete');
 
 Route::get('/search', 'ChoreController@getSearch');
 Route::post('/search', 'ChoreController@postSearch');
 
-/**
-* Tag
-* (Implicit RESTful Routing)
-*/
-Route::resource('tag', 'TagController');
 

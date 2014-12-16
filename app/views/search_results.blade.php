@@ -28,7 +28,7 @@
 		</thead>
 		<tbody>
 		<tr>
-		<td>@foreach($tag->chores as $chore)
+		<td>@foreach($chore->tags as $tag)
 			{{ $chore->description }}</td>
 		<td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
 		<td>

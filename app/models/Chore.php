@@ -10,7 +10,7 @@ class Chore extends Eloquent {
     */
     public function tags() {
 
-        return $this->belongsToMany('Tag');
+        return $this->belongsToMany('Tag', 'chore_tag');
     }
 
     /**
@@ -49,7 +49,7 @@ class Chore extends Eloquent {
     
     public static function search($query) {
 
-        # If there is a query, search the library with that query
+        # If there is a query, search the table with that query
         if($query) {
 
             # Eager load tags and author

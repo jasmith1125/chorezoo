@@ -28,8 +28,7 @@ class ChoreController extends BaseController {
         $chore->fill(Input::except('tags'));
         $chore->user()->associate(Auth::user());
         $chore->completed = Input::has('completed');
-        //$chore->save();
-
+        
         # Note this save happens before we enter any tags (next step)
         $chore->save();
 
@@ -39,6 +38,7 @@ class ChoreController extends BaseController {
          $chore->tags()->save(Tag::find($tag));
 
         }
+        $chore->completed = Input::has('completed');
 
         return Redirect::action('ChoreController@getChart');
 
@@ -62,15 +62,30 @@ class ChoreController extends BaseController {
         # Note this save happens before we enter any tags (next step)
         $chore->save();
 
+       // foreach(Input::get('tags') as $tag) {
+
+         # This enters a new row in the chore_tag table
+         //$chore->tags()->save(Tag::find($tag));
+
+     //}    
+        return Redirect::action('ChoreController@getChart');
+    }
+
+    /*public function getTag(Chore $chore)
+    {
+        $tags = Tag::getIdNamePair();
+        return View::make('tag', compact('chore'))->with('tags',$tags);
+    }
+
+    public function postTag() 
+    {
         foreach(Input::get('tags') as $tag) {
 
          # This enters a new row in the chore_tag table
          $chore->tags()->save(Tag::find($tag));
-
-     }    
-        return Redirect::action('ChoreController@getChart');
+          return Redirect::action('ChoreController@getChart');
     }
-
+} */
 
      public function getSearch()
     {
@@ -93,11 +108,6 @@ class ChoreController extends BaseController {
         return View::make('search_results', compact('chores'));
     }
 
-    public function tag(Chore $chore)
-    {
-        // Show the edit chore form.
-        return Redirect::action('ChoreController@getChart');
-    }
 
     public function delete(Chore $chore)
     {
