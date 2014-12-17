@@ -14,7 +14,7 @@
 {{ Form::open(array('url' => '/search')) }}
 
         @foreach($tags as $id => $tag)
-            {{ Form::radio('tags[]', $id); }} {{ $tag }}
+           {{ Form::radio('tags[]', $id); }} {{ $tag }}<br>
         @endforeach
 
         {{ Form::submit('Search'); }}

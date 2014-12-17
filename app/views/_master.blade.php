@@ -48,7 +48,7 @@
             </ul>
         @else
          <div class="row">
-         <div class="large-6 large-centered columns">
+         <div class="large-6 large-centered small-6 small-centered columns">
            <ul class="button-group radius">
             <li><a href='/signup' class="medium button alert radius">Sign Up</a></li>
           <li><a href='/login' class="medium button alert radius">Log In</a></li>

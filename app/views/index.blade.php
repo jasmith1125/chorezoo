@@ -13,7 +13,9 @@
    @if(Session::get('flash_message'))
         <div class='flash-message'>{{ Session::get('flash_message') }}</div>
     @endif
-
+    <p>&nbsp;</p>
+</div>
+</div>
     
 <script src="{{ URL::asset('js/vendor/jquery.js') }}"></script>
   <script src="{{ URL::asset('js/foundation.min.js') }}"></script>

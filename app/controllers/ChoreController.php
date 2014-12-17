@@ -19,29 +19,30 @@ class ChoreController extends BaseController {
         ->with('tags',$tags);
     }
 
-    public function postCreate()
-    {
-        // Handle create form submission.
-        // instantiate the chore model
-        $chore = new Chore();
-        $chore->description = Input::get('description');
-        $chore->fill(Input::except('tags'));
-        $chore->user()->associate(Auth::user());
-        $chore->completed = Input::has('completed');
-        
-        # Note this save happens before we enter any tags (next step)
-        $chore->save();
+    
+   public function postCreate()
+{
+// Handle create form submission.
+// instantiate the chore model
+    $chore = new Chore();
+    $chore->description = Input::get('description');
+    $chore->fill(Input::except('tags'));
+    $chore->user()->associate(Auth::user());
+    $chore->completed = Input::has('completed');
+    # Note this save happens before we enter any tags (next step)
+    $chore->save();
+    
+    if(Input::has('tags')) {
 
-        foreach(Input::get('tags') as $tag) {
+            foreach(Input::get('tags') as $tag) {
 
-         # This enters a new row in the chore_tag table
-         $chore->tags()->save(Tag::find($tag));
+                # This enters a new row in the chore_tag table
+                $chore->tags()->save(Tag::find($tag));
+              }  
+            }
+    return Redirect::action('ChoreController@getChart');
+}
 
-        }
-
-        return Redirect::action('ChoreController@getChart');
-
-    }
 
     public function getEdit($id)
     {
@@ -68,16 +69,12 @@ class ChoreController extends BaseController {
     */
     public function postEdit() {
 
-        try {
-            $chore = Chore::with('tags')->findOrFail(Input::get('id'));
-        }
-        catch(exception $e) {
-            return Redirect::to('/chart')->with('flash_message', 'Chore not found');
-        }
 
-        try {
+            $chore = Chore::with('tags')->findOrFail(Input::get('id'));
+     
             # http://laravel.com/docs/4.2/eloquent#mass-assignment
             $chore->fill(Input::except('tags'));
+            $chore->completed = Input::has('completed');
             $chore->save();
 
             # Update tags associated with this book
@@ -87,11 +84,7 @@ class ChoreController extends BaseController {
             return Redirect::action('ChoreController@getChart')->with('flash_message','Your changes have been saved.');
 
         }
-        catch(exception $e) {
-            return Redirect::to('/chart')->with('flash_message', 'Error saving changes.');
-        }
 
-    }
 
 
      public function getSearch()
@@ -107,44 +100,59 @@ class ChoreController extends BaseController {
         public function postSearch()
     {   
         // Get chores associated with current user
-
-       $user = Auth::user();
-       $chores = $user->chores;
+        
+        $user = Auth::user();
        
-
        try {
         // Get array of tag ids that were checked
         $tags = Input::get('tags');
 
         // Query for chores that have this tag(s)
-        $chores = Chore::whereHas('tags', function($q) use ($tags) {
+        if ($user)
+        {
+       $chores = Chore::whereHas('tags', function($q) use ($tags) {
             $q->whereIn('id', $tags);
-        })->get();
+           })->get();
+           }
 
         return View::make('search_results', compact('chores'));
     }
         catch(exception $e) {
 
-        return Redirect::to('search')->with('flash_message', 'You have no chores with that tag.');
+        return Redirect::to('search')->with('flash_message', 'You have no chores with that tag');
 }
 }
 
 
     public function getDelete(Chore $chore)
     {
+        try {
         // Show delete confirmation page.
         return View::make('delete', compact('chore'));
+        }
+        catch(exception $e) {
+            return Redirect::to('/chart')->with('flash_message', 'Chore not found');
+        }
     }
 
+    /**
+    * Process chore deletion
+    *
+    * @return Redirect
+    */
     public function postDelete()
     {
-        // Handle the delete confirmation.
+        try {
         $id = Input::get('chore');
         $chore = Chore::findOrFail($id);
         $chore->user()->associate(Auth::user());
+        }
+        catch(exception $e) {
+        return Redirect::to('/chart')->with('flash_message', 'Chore not found');
+    }
         $chore->delete();
-
+        
         return Redirect::action('ChoreController@getChart');
     }
-
 }
+

@@ -19,31 +19,31 @@
 @else
     
 <table>
-<thead class="choreheader">
-<tr>
-<th width="500">Chore Description</th>
-<th width="250">Completed?</th>
-<th width="400">Actions</th>
-</tr>
-</thead>
-<tbody>
-@foreach($chores as $chore)
-<tr>
-<td>{{ $chore->description }}</td>
-<td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
-<td>
-<a href="{{ action('ChoreController@getEdit', $chore->id) }}" class="button tiny secondary">Edit/Add Tag</a>
-<a href="{{ action('ChoreController@getDelete', $chore->id) }}" class="button tiny alert">Delete</a>
-</td>
-</tr>
-@endforeach
-</tbody>
-</table>
-</div>
-</div>
+	<thead class="choreheader">
+		<tr>
+		<th width="500">Chore Description</th>
+		<th width="250">Completed?</th>
+		<th width="400">Actions</th>
+		</tr>
+	</thead>
+		<tbody>
+		@foreach($chores as $chore)
+		<tr>
+		<td>{{ $chore->description }}</td>
+		<td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
+		<td>
+		<a href="{{ action('ChoreController@getEdit', $chore->id) }}" class="button tiny secondary">Edit/Add Tag</a>
+		<a href="{{ action('ChoreController@getDelete', $chore->id) }}" class="button tiny alert">Delete</a>
+		</td>
+		</tr>
+	@endforeach
+		</tbody>
+	</table>
+	</div>
+	</div>
 
-@endif
-    
+	@endif
+	    
 <script src="{{ URL::asset('js/vendor/jquery.js') }}"></script>
   <script src="{{ URL::asset('js/foundation.min.js') }}"></script>
   <script>

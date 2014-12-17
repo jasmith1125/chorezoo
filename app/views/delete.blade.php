@@ -14,6 +14,8 @@
         <input type="submit" class="btn btn-danger" value="Yes" />
         <a href="{{ action('ChoreController@getChart') }}" class="btn btn-default">Cancel</a>
     </form>
+    <p>&nbsp;</p>
+     <p>&nbsp;</p>
 </div>
 </div>    
 @stop

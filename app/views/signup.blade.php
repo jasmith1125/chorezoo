@@ -6,7 +6,8 @@
 
 @section('content')
 <div id="longer_page" class="row">
-<div class ="large-5 large-centered columns">
+<div class ="large-5 large-centered medium-6 medium-centered small-7 small-centered columns">
+
 <h3>Sign up</h3>
 
 @foreach($errors->all() as $message)
@@ -25,10 +26,9 @@
     {{ Form::submit('Submit') }}
 
 {{ Form::close() }}
-
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 </div>
-<p>&nbsp;</p>
 </div>
 
 @stop

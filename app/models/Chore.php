@@ -51,6 +51,7 @@ class Chore extends Eloquent {
 
         $user = Auth::user();
         $chores =$user->chores;
+        
 
         if(Auth::user())
         # If there is a query, search the table with that query

@@ -19,18 +19,21 @@
         </div>
         <div class="checkbox">
             <label for="completed">
-                <input type="checkbox" name="completed" {{ $chore->completed ? 'checked' : '' }} /> Completed?
+              <input type="checkbox" name="completed" {{ $chore->completed ? 'checked' : '1', null }} /> Completed? 
             </label>
-        
-
+<div class="row">  
+<div class="large-12large-centered columns">
 <h5 small>Add tags to your chore so you can search chores by category</h5 small>
         @foreach($tags as $id => $tag)
-            {{ Form::checkbox('tags[]', $id); }} {{ $tag }} 
+            {{ Form::checkbox('tags[]', $id); }} {{ $tag }}&nbsp;&nbsp;&nbsp; 
         @endforeach
-        <br>
+        <br><br>
         <input type="submit" value="Save" class="btn btn-primary" />
         <a href="{{ action('ChoreController@getChart') }}" class="btn btn-link">Cancel</a>
     </form>
+   
+</div></div>
+
     </div>
     </div>
     </div>

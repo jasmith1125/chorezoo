@@ -20,13 +20,13 @@
   <div id="space_above">      
     <h5 small>Add tags to your chore so you can search chores by category</h5 small>
         @foreach($tags as $id => $tag)
-            {{ Form::checkbox('tags[]', $id); }} {{ $tag }} 
+            {{ Form::checkbox('tags[]', $id); }} {{ $tag }} &nbsp;&nbsp;&nbsp; 
         @endforeach
-        <br>
+      <br><br>
         {{ Form::submit('Create'); }}
 
     {{ Form::close() }}
-    <p>&nbsp;</p>
+
     </div>
     </div>
     </div>
