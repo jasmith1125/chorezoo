@@ -46,16 +46,16 @@ Route::model('chore', 'Chore');
 Route::get('/chart', 'ChoreController@getChart');
 
 Route::get('/create', 'ChoreController@getCreate');
-Route::post('/create', 'ChoreController@handleCreate');
+Route::post('/create', 'ChoreController@postCreate');
 
-Route::get('/edit/{chore}', 'ChoreController@edit');
-Route::post('/edit', 'ChoreController@handleEdit');
+Route::get('/edit/{id}', 'ChoreController@getEdit');
+Route::post('/edit', 'ChoreController@postEdit');
 
 /* Route::get('/getTag{chore}', 'ChoreController@getTag');
 Route::post('/postTag', 'ChoreController@postTag'); */
 
-Route::get('/delete/{chore}', 'ChoreController@delete');
-Route::post('/delete', 'ChoreController@handleDelete');
+Route::get('/delete/{chore}', 'ChoreController@getDelete');
+Route::post('/delete', 'ChoreController@postDelete');
 
 Route::get('/search', 'ChoreController@getSearch');
 Route::post('/search', 'ChoreController@postSearch');

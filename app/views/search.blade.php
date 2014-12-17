@@ -20,6 +20,7 @@
         {{ Form::submit('Search'); }}
 
     {{ Form::close() }}
+    <p>&nbsp;</p>
     </div>
     </div>
 

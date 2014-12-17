@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div id="longer_page" class="row">
+<div class="row">
     <div class="large-8 large-centered columns">
         <h3>Create Chore</h3>
 
@@ -26,6 +26,7 @@
         {{ Form::submit('Create'); }}
 
     {{ Form::close() }}
+    <p>&nbsp;</p>
     </div>
     </div>
     </div>

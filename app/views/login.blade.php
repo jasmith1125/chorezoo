@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<div id="longer_page" class="row">
+<div class="row">
 <div class ="large-5 large-centered columns">
 <h3>Log in</h3>
 

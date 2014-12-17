@@ -7,7 +7,7 @@
 @section('content')
  
  
-<div id= "longer_page" class="row">
+<div id="longer_page" class="row">
 <div class="large-10 large-centered columns">
 
    @if(Session::get('flash_message'))

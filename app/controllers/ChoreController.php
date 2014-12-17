@@ -19,7 +19,7 @@ class ChoreController extends BaseController {
         ->with('tags',$tags);
     }
 
-    public function handleCreate()
+    public function postCreate()
     {
         // Handle create form submission.
         // instantiate the chore model
@@ -43,47 +43,74 @@ class ChoreController extends BaseController {
 
     }
 
-    public function edit(Chore $chore)
+    public function getEdit($id)
     {
+
         // Show the edit chore form.
-        $tags = Tag::getIdNamePair();
-        return View::make('edit', compact('chore'))->with('tags',$tags);
+        try {
+        // Get the chore and all of its associated tags
+        $chore = Chore::with('tags')->findOrFail($id);
+        
+        # Get all the tags (not just the ones associated with this book)
+        $tags    = Tag::getIdNamePair();
+    }   catch(exception $e) {
+            return Redirect::to('/chart')->with('flash_message', 'Chore not found');
+        }
+
+        return View::make('edit')
+            ->with('chore', $chore)
+            ->with('tags',$tags);
     }
 
-    public function handleEdit()
-    {
-        // Handle edit form submission.
-        $chore = Chore::findOrFail(Input::get('id'));
-        $chore->description = Input::get('description');
-        $chore->completed     = Input::has('completed');
-        $chore->save();
+    /**
+    * Process the "Edit a chore form"
+    * @return Redirect
+    */
+    public function postEdit() {
 
-        # Note this save happens before we enter any tags (next step)
-        $chore->save();
+        try {
+            $chore = Chore::with('tags')->findOrFail(Input::get('id'));
+        }
+        catch(exception $e) {
+            return Redirect::to('/chart')->with('flash_message', 'Chore not found');
+        }
 
-       foreach(Input::get('tags') as $tag) {
+        try {
+            # http://laravel.com/docs/4.2/eloquent#mass-assignment
+            $chore->fill(Input::except('tags'));
+            $chore->save();
 
-         # This enters a new row in the chore_tag table
-        $chore->tags()->save(Tag::find($tag));
+            # Update tags associated with this book
+            if(!isset($_POST['tags'])) $_POST['tags'] = array();
+            $chore->updateTags($_POST['tags']);
 
-         
-        return Redirect::action('ChoreController@getChart');
+            return Redirect::action('ChoreController@getChart')->with('flash_message','Your changes have been saved.');
+
+        }
+        catch(exception $e) {
+            return Redirect::to('/chart')->with('flash_message', 'Error saving changes.');
+        }
+
     }
-}
 
 
      public function getSearch()
-    {
-        $tags = Tag::getIdNamePair();
+    {   
+        $user = Auth::user();
         
         return View::make('search')
         ->with('tags',$tags);
         
     }
 
-        public function postSearch()
-    {
 
+        public function postSearch()
+    {   
+        // Get chores associated with current user
+
+       if(Auth::user())
+    { 
+       try {
         // Get array of tag ids that were checked
         $tags = Input::get('tags');
 
@@ -93,16 +120,23 @@ class ChoreController extends BaseController {
         })->get();
 
         return View::make('search_results', compact('chores'));
-
     }
+        catch(exception $e) {
 
-    public function delete(Chore $chore)
+        return Redirect::to('search')->with('flash_message', 'You have no chores with that tag.')
+    }//closes catch
+  }//closes if
+}//closes function
+
+
+
+    public function getDelete(Chore $chore)
     {
         // Show delete confirmation page.
         return View::make('delete', compact('chore'));
     }
 
-    public function handleDelete()
+    public function postDelete()
     {
         // Handle the delete confirmation.
         $id = Input::get('chore');

@@ -7,7 +7,7 @@
 @section('content')
  
  
-<div id="longer_page" class="row">
+<div class="row">
 <div class="large-10 large-centered columns">
 
 <h3>Here Is Your Chore Chart!</h3>
@@ -32,8 +32,8 @@
 <td>{{ $chore->description }}</td>
 <td>{{ $chore->completed ? 'Yes' : 'No' }}</td>
 <td>
-<a href="{{ action('ChoreController@edit', $chore->id) }}" class="button tiny secondary">Edit Chore/Add Tag</a>
-<a href="{{ action('ChoreController@delete', $chore->id) }}" class="button tiny alert">Delete</a>
+<a href="{{ action('ChoreController@getEdit', $chore->id) }}" class="button tiny secondary">Edit/Add Tag</a>
+<a href="{{ action('ChoreController@getDelete', $chore->id) }}" class="button tiny alert">Delete</a>
 </td>
 </tr>
 @endforeach

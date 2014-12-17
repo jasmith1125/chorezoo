@@ -11,9 +11,12 @@
 
 }
 /* Background pattern from subtlepatterns.com */
-#outer_limits {
-  background: url('../img/subtle_zebra_3d_@2X.png')repeat;
-  height: auto;
+html {
+  background: url('../img/subtle_zebra_3d_@2X.png') repeat;
+  height: 100%;
+} 
+body {
+  background: none;
 }
 
 #container {
@@ -21,9 +24,9 @@ background-color: #ffffff;
 margin: 0 auto;
 padding: 0;
  height: auto%;
- -webkit-box-shadow: 8px 0px 10px -5px rgba(153, 153, 153, 1), -8px 0px 10px -5px rgba(153, 153, 153, 1);
+-webkit-box-shadow: 8px 0px 10px -5px rgba(153, 153, 153, 1), -8px 0px 10px -5px rgba(153, 153, 153, 1);
    -moz-box-shadow: 8px 0px 10px -5px rgba(153, 153, 153, 1), -8px 0px 10px -5px rgba(153, 153, 153, 1);
-        box-shadow: 8px 0px 10px -5px rgba(153, 153, 153, 1), -8px 0px 10px -5px rgba(153, 153, 153, 1);
+        box-shadow: 8px 0px 10px -5px rgba(153, 153, 153, 1), -8px 0px 10px -5px rgba(153, 153, 153, 1);  
 }
 #indexbuttons {
 	margin-top: -1em;
@@ -75,15 +78,13 @@ h5 {
 .alert-box {
   padding-top: .5em;
 }
-h3 small {
-  font-size: 40%;
-}
+
 img {
   padding-bottom: 1em;
 }
-#longer_page {
-  padding-bottom: 30em;
-}
+/* #longer_page {
+  padding-bottom: 100em;
+} */
 
 button.alert, .button.alert {
     background-color: #fd6103;

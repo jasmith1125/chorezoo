@@ -47,8 +47,12 @@ class Chore extends Eloquent {
     * @return Collection
     */
     
-  public static function search($query) {
+ public static function search($query) {
 
+        $user = Auth::user();
+        $chores =$user->chores;
+
+        if(Auth::user())
         # If there is a query, search the table with that query
         if($query) {
 
@@ -74,5 +78,6 @@ class Chore extends Eloquent {
         }
 
         return $chores;
-    }
+    } 
+
 } 

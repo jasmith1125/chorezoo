@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<div id="longer_page" class="row">
+<div class="row">
     <div class="large-8 large-centered columns">
         <h3>Tag Chore <small>Then you will be able to search chores by category!</small></h3>
      
