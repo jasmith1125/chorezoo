@@ -25,5 +25,10 @@
     {{ Form::submit('Submit') }}
 
 {{ Form::close() }}
-</div></div>
+
+<p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+</div>
+
 @stop

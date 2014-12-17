@@ -95,21 +95,23 @@ class ChoreController extends BaseController {
 
 
      public function getSearch()
-    {   
-        $user = Auth::user();
-        
-        return View::make('search')
-        ->with('tags',$tags);
-        
-    }
+     {
+         $tags = Tag::getIdNamePair();
+         
+         return View::make('search')
+         ->with('tags',$tags);
+         
+     }
 
 
         public function postSearch()
     {   
         // Get chores associated with current user
 
-       if(Auth::user())
-    { 
+       $user = Auth::user();
+       $chores = $user->chores;
+       
+
        try {
         // Get array of tag ids that were checked
         $tags = Input::get('tags');
@@ -123,11 +125,9 @@ class ChoreController extends BaseController {
     }
         catch(exception $e) {
 
-        return Redirect::to('search')->with('flash_message', 'You have no chores with that tag.')
-    }//closes catch
-  }//closes if
-}//closes function
-
+        return Redirect::to('search')->with('flash_message', 'You have no chores with that tag.');
+}
+}
 
 
     public function getDelete(Chore $chore)
