@@ -6,7 +6,7 @@
 
 @section('content')
 <div id="longer_page" class="row">
-   <div class="large-8 large-centered columns">
+  <div class="large-8 large-centered medium-10 medium-centered small-11 small-centered columns">
 	<h3>Search Chores by Tag</h3>
 
 <!-- show all the tag options -->

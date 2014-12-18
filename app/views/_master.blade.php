@@ -6,14 +6,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>@yield('title','ChoreZoo')</title>
+    <title>@yield('title','Chore Zoo')</title>
 
     {{ HTML::style('css/foundation.css') }}
   {{ HTML::style('css/normalize.css')}}
   {{ HTML::style('css/app.css') }}
   
   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
- <link href='http://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
   <script src="{{ URL::asset('js/vendor/custom.modernizr.js') }}"></script>
 
     @yield('head')
@@ -33,14 +32,15 @@
 <div class="row">
 <div class="large-4 large-offset-7 columns">
    @if(Session::get('flash_message'))
-        <div data-alert class="alert-box alert round">{{ Session::get('flash_message') }}</div>
+        <div class="alert-box alert round">{{ Session::get('flash_message') }}</div>
     @endif
-    </div></div>
+    </div>
+  </div>
 
 <div class="row">
-<div class="large-8 large-centered medium-10 medium-centered small-11 columns">
+<div class="large-8 large-centered medium-10 medium-centered small-11 small-centered columns">
+       @if(Auth::check())
     <ul class="inline-list">
-        @if(Auth::check())
             <li><a href='/logout'>Log out {{ Auth::user()->username; }}</a></li>
             <li><a href='/chart'>Your Chore Chart</a></li>
             <li><a href='/create'>Create a New Chore</a></li>

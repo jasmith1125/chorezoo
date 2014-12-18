@@ -8,8 +8,10 @@
  
  
 <div class="row">
-<div class="large-10 large-centered medium-10 medium-centered small-11 small-centered columns">
-
+<div class="large-9 large-centered medium-10 medium-centered small-11 small-centered columns">
+@foreach($errors->all() as $message) 
+    <div data-alert class="alert-box info radius">{{ $message }}</div>
+  @endforeach    
 <h3>Here Is Your Chore Chart!</h3>
 
 @if ($chores->isEmpty())
@@ -19,9 +21,9 @@
 <table>
 	<thead class="choreheader">
 		<tr>
-		<th width="550">Chore Description</th>
-		<th width="200">Completed?</th>
-		<th width="400">Actions</th>
+		<th>Chore Description</th>
+		<th>Completed?</th>
+		<th>Actions</th>
 		</tr>
 	</thead>
 		<tbody>

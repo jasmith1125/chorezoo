@@ -22,6 +22,17 @@ class ChoreController extends BaseController {
     
    public function postCreate()
 {
+     $rules = array(
+        'description' => 'required|alpha_num|min:2',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if($validator->fails()) {
+        return Redirect::to('/chart')
+        ->with('flash_message', 'Chore creation failed')
+        ->withInput()
+        ->withErrors($validator);
+        }
+
     // Handle create form submission.
     // instantiate the chore model
     $chore = new Chore();
@@ -70,6 +81,17 @@ class ChoreController extends BaseController {
     * @return Redirect
     */
     public function postEdit() {
+
+     $rules = array(
+        'description' => 'required|alpha_num|min:2',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if($validator->fails()) {
+        return Redirect::to('/chart')
+        ->with('flash_message', 'Chore edit failed')
+        ->withInput()
+        ->withErrors($validator);
+        } 
 
           try {
             $chore = Chore::with('tags')->findOrFail(Input::get('id'));

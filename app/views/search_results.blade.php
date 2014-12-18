@@ -7,8 +7,7 @@
 @section('content')
  
 	<div class="row">
-	<div class="large-10 large-centered columns">
-	
+	 <div class="large-10 large-centered medium-10 medium-centered small-11 small-centered columns">
 	<h3>Here Are Your Search Results!</h3>
 
 		@if ($chores->isEmpty())
@@ -16,11 +15,11 @@
 		@else
 		    
 	<table>
-		<thead class="choreheader">
+		<thead>
 		<tr>
-		<th width="500">Chore Description</th>
-		<th width="250">Completed?</th>
-		<th width="400">Actions</th>
+		<th>Chore Description</th>
+		<th>Completed?</th>
+		<th>Actions</th>
 		</tr>
 	</thead>
 		<tbody>
@@ -42,11 +41,5 @@
 	</div>
 		@endif
     <p>&nbsp;</p>
-<script src="{{ URL::asset('js/vendor/jquery.js') }}"></script>
-  <script src="{{ URL::asset('js/foundation.min.js') }}"></script>
-  <script>
-    $(document).foundation();
-  </script>
-</body>
-</html>
+
 @stop

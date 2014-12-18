@@ -7,14 +7,12 @@
 @section('content')
 
 <div class="row">
-    <div class="large-9 large-centered columns">
+    <div class="large-8 large-centered medium-10 medium-centered small-11 small-centered columns">
         <h3>Create Chore</h3>
-
-        
 
    {{ Form::open(array('url' => '/create')) }}
 
-        {{ Form::label('title','Description') }}
+        {{ Form::label('description','Description') }}
         {{ Form::text('description'); }}
         
   <div id="space_above">      
@@ -24,10 +22,10 @@
         @endforeach
       <br><br>
         {{ Form::submit('Create'); }}
-
+        </div>
     {{ Form::close() }}
     <p>&nbsp;</p>
-    </div>
+    
     </div>
     </div>
         
