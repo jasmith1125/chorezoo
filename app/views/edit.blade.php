@@ -6,8 +6,8 @@
 
 @section('content')
 <div class="row">
-    <div class="large-8 large-centered columns">
-        <h3>Edit Chore Description <small>Be sure to check &ldquo;completed&rdquo; when your chore is done!</small></h3>
+    <div class="large-9 large-centered columns">
+        <h3>Edit Chore Description <small>Check &ldquo;completed&rdquo; when your chore is done!</small></h3>
      
 
     <form action="{{ action('ChoreController@postEdit') }}" method="post" role="form">
@@ -21,6 +21,7 @@
             <label for="completed">
               <input type="checkbox" name="completed" {{ $chore->completed ? 'checked' : '1', null }} /> Completed? 
             </label>
+        </div>
 <div class="row">  
 <div class="large-12large-centered columns">
 <h5 small>Add tags to your chore so you can search chores by category</h5 small>
@@ -31,12 +32,12 @@
         <input type="submit" value="Save" class="btn btn-primary" />
         <a href="{{ action('ChoreController@getChart') }}" class="btn btn-link">Cancel</a>
     </form>
-   
-</div></div>
+   <p>&nbsp;</p>
+</div>
+</div>
 
-    </div>
-    </div>
-    </div>
+</div>
+</div>
 
 
 @stop

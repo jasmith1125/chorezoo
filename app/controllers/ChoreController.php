@@ -22,8 +22,8 @@ class ChoreController extends BaseController {
     
    public function postCreate()
 {
-// Handle create form submission.
-// instantiate the chore model
+    // Handle create form submission.
+    // instantiate the chore model
     $chore = new Chore();
     $chore->description = Input::get('description');
     $chore->fill(Input::except('tags'));
@@ -48,20 +48,22 @@ class ChoreController extends BaseController {
     {
 
         // Show the edit chore form.
-        try {
-        // Get the chore and all of its associated tags
-        $chore = Chore::with('tags')->findOrFail($id);
         
-        # Get all the tags (not just the ones associated with this book)
-        $tags    = Tag::getIdNamePair();
-    }   catch(exception $e) {
+        try {
+             # Get all the tags (not just the ones associated with this chore)
+            $tags    = Tag::getIdNamePair();
+            // Get the chore and all of its associated tags
+            $chore = Chore::with('tags')->findOrFail($id);
+        }   
+        catch(exception $e) {
             return Redirect::to('/chart')->with('flash_message', 'Chore not found');
         }
-
-        return View::make('edit')
-            ->with('chore', $chore)
-            ->with('tags',$tags);
+       
+            return View::make('edit')
+                ->with('chore', $chore)
+                ->with('tags',$tags);
     }
+
 
     /**
     * Process the "Edit a chore form"
@@ -69,20 +71,27 @@ class ChoreController extends BaseController {
     */
     public function postEdit() {
 
-
+          try {
             $chore = Chore::with('tags')->findOrFail(Input::get('id'));
-     
-            # http://laravel.com/docs/4.2/eloquent#mass-assignment
-            $chore->fill(Input::except('tags'));
-            $chore->completed = Input::has('completed');
-            $chore->save();
+        }
+            catch(exception $e) {
+                 return Redirect::to('/chart')->with('flash_message', 'Chore not found');
+         }
+            try {
+                # http://laravel.com/docs/4.2/eloquent#mass-assignment
+                $chore->fill(Input::except('tags'));
+                $chore->completed = Input::has('completed');
+                $chore->save();
 
-            # Update tags associated with this book
-            if(!isset($_POST['tags'])) $_POST['tags'] = array();
-            $chore->updateTags($_POST['tags']);
+                # Update tags associated with this book
+                if(!isset($_POST['tags'])) $_POST['tags'] = array();
+                $chore->updateTags($_POST['tags']);
 
-            return Redirect::action('ChoreController@getChart')->with('flash_message','Your changes have been saved.');
-
+                return Redirect::action('ChoreController@getChart')->with('flash_message','Your changes have been saved');
+            }
+            catch(exception $e) {
+                return Redirect::to('/chart')->with('flash_message','Error saving changes');
+            }
         }
 
 
@@ -99,25 +108,19 @@ class ChoreController extends BaseController {
 
         public function postSearch()
     {   
-        // Get chores associated with current user
         
-        $user = Auth::user();
-       
-       try {
-        // Get array of tag ids that were checked
         $tags = Input::get('tags');
-
-        // Query for chores that have this tag(s)
-        if ($user)
-        {
-       $chores = Chore::whereHas('tags', function($q) use ($tags) {
-            $q->whereIn('id', $tags);
-           })->get();
-           }
+        $user = Auth::user();
+        // Query for chores that belong to logged-in user and have this tag
+        try {
+            $chores = Chore::where('user_id','=',$user->id)
+                ->whereHas('tags', function($q) use ($tags) {
+                 $q->whereIn('id', $tags);
+        })->get();
 
         return View::make('search_results', compact('chores'));
     }
-        catch(exception $e) {
+       catch(exception $e) {
 
         return Redirect::to('search')->with('flash_message', 'You have no chores with that tag');
 }

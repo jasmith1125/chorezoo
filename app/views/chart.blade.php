@@ -8,12 +8,10 @@
  
  
 <div class="row">
-<div class="large-10 large-centered columns">
+<div class="large-10 large-centered medium-10 medium-centered small-11 small-centered columns">
 
 <h3>Here Is Your Chore Chart!</h3>
 
-<div class="row">
-<div class="large-12 large-centered columns">
 @if ($chores->isEmpty())
 <p>There are no chores!</p>
 @else
@@ -21,8 +19,8 @@
 <table>
 	<thead class="choreheader">
 		<tr>
-		<th width="500">Chore Description</th>
-		<th width="250">Completed?</th>
+		<th width="550">Chore Description</th>
+		<th width="200">Completed?</th>
 		<th width="400">Actions</th>
 		</tr>
 	</thead>
@@ -43,12 +41,6 @@
 	</div>
 
 	@endif
-	    
-<script src="{{ URL::asset('js/vendor/jquery.js') }}"></script>
-  <script src="{{ URL::asset('js/foundation.min.js') }}"></script>
-  <script>
-    $(document).foundation();
-  </script>
-</body>
-</html>
+	 <p>&nbsp;</p>   
+
 @stop

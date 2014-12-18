@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="row">
-    <div class="large-8 large-centered columns">
+    <div class="large-9 large-centered columns">
         <h3>Create Chore</h3>
 
         
@@ -18,7 +18,7 @@
         {{ Form::text('description'); }}
         
   <div id="space_above">      
-    <h5 small>Add tags to your chore so you can search chores by category</h5 small>
+    <span class="h5 small">Add tags to your chore so you can search chores by category</span><br>
         @foreach($tags as $id => $tag)
             {{ Form::checkbox('tags[]', $id); }} {{ $tag }} &nbsp;&nbsp;&nbsp; 
         @endforeach
@@ -26,7 +26,7 @@
         {{ Form::submit('Create'); }}
 
     {{ Form::close() }}
-
+    <p>&nbsp;</p>
     </div>
     </div>
     </div>

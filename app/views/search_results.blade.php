@@ -6,13 +6,11 @@
 
 @section('content')
  
-	<div id="longer_row" class="row">
+	<div class="row">
 	<div class="large-10 large-centered columns">
 	
 	<h3>Here Are Your Search Results!</h3>
 
-	<div class="row">
-	<div class="large-12 large-centered columns">
 		@if ($chores->isEmpty())
 		<p>There are no chores with this tag</p>
 		@else
@@ -43,7 +41,7 @@
 	</div>
 	</div>
 		@endif
-    
+    <p>&nbsp;</p>
 <script src="{{ URL::asset('js/vendor/jquery.js') }}"></script>
   <script src="{{ URL::asset('js/foundation.min.js') }}"></script>
   <script>

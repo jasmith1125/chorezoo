@@ -38,7 +38,7 @@
     </div></div>
 
 <div class="row">
-<div class="large-8 large-offset-2 columns">
+<div class="large-8 large-centered medium-10 medium-centered small-11 columns">
     <ul class="inline-list">
         @if(Auth::check())
             <li><a href='/logout'>Log out {{ Auth::user()->username; }}</a></li>

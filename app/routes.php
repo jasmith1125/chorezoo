@@ -14,16 +14,6 @@
 
 /* retrieving data from pivot table test */
 
-Route::get('/test', function() {
-
-	//echo Paste\Pre::render(Chore::find(1)->tags->toArray());
-
-	foreach(Chore::find(1)->tags as $tag) {
-		echo Paste\Pre::render($tag->pivot->toArray());
-
-	}
-
-});
 
 //show the home page
 Route::get('/', 'IndexController@getIndex');

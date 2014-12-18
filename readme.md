@@ -1,25 +1,34 @@
-## Laravel PHP Framework
+Joyce Smith  
+DWA15, Project 3  
+October 30, 2014
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+**Live URL:** [http://p3.jasmith1125.me](http://p3.jasmith1125.me)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+**Demo Information:** Jing screencast URL: [http://screencast.com/t/ZICxxdSNu1](http://screencast.com/t/ZICxxdSNu1)
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+**Description:** This project demonstrates that I have a basic understanding of working within the Laravel framework, including generating routes and views, working with Composer packages, creating and validating forms, and deploying a Laravel app to a live server. 
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+**Details for teaching team:**  
+My customized CSS is in the project folder: css/app.css; this validates via WC3 standards.  
 
-## Official Documentation
+My logic is mainly in routes.php; logic to print "muttlem ipsum" text is on the view page due to "resource error 138" generated when I tried to put this in routes. 
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+My original intention with the text generator was to offer a choice of three different text types: lorem ipsum, scrambled doggerel, and  "muttlem ipsum" that includes a mix of Latin and doggerel. I don't currently have the coding skills to pull that off, so attempted an experiment where I edited the word list in the Badcow generator to include some doggerel. This worked fine to generate "muttlem ipsum" locally. I figured I could toss "gitignore" for the vendors file and version control the Badcow generator I had edited. So I pushed that to github. HUGE, HUGE MISTAKE! When I deployed project 3 to Digital Ocean, I realized that the vendor files were completely scrambled and the app was unviewable on the live server. Put vendors back in "gitignore," regenerated Badcow and all vendors, pushed the changed version to github, completely removed p3 from D.O. and tried to redeploy the repaired files. That was a "no go," when I did Composer update on D.O. I would see a bunch of vendor garbage deploy and would get a message "nothing new to add"--somehow the messed-up vendor files were still lurking around fouling up the process. Thinking the polluted files were coming from github and not seeing them in the repository, I ultimately destroyed my project3 repo and recreated the project in a new repository. When that didn't correct the problem and after taking a closer look at the code generated within the droplet, I finally realized what I needed to do was clear the cache over there (I had thought the power cycle did that, but that is not the case).   
 
-### Contributing To Laravel
+**There is a PNG file called "p3-commitHistory.png" in my project file that shows my commit history prior to destroying the original repo.**
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+All pages validate via WC3 HTML standards. I tried to make the generators as user friendly as possible by including the following features:  
+1. Error messages to direct users toward valid input.   
+2. Font color differentiation for generated text and user data.  
+3. Footer navigation links.
 
-### License
+Features I would like to add:
+1. Text generator: paragraph size options, text type options for randomly generated text.
+2. User generator: checkboxes to offer options re email address, mailing address, phone number, user profile, etc. (rather than current preset data fields).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+**Outside resources:**  
+1. I used Zurb Foundation 5 framework, source:  [http://foundation.zurb.com/](http://foundation.zurb.com/)  
+2. Fonts are from Google Fonts: [https://www.google.com/fonts/](https://www.google.com/fonts/)  
+3. William Topaz McGonagall poetry used within "muttlem ipsum" was found online: [http://www.poemhunter.com/william-topaz-mcgonagall/](http://www.poemhunter.com/william-topaz-mcgonagall/)  
+4. Dog photo in the banner is a personal photo of my family dawg.  
+5. Background texture is from [http://www.subtlepatterns.com](http://www.subtlepatterns.com)
